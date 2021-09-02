@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataManager.Business {
+namespace EFPractice.Model {
   public class CredentialManager_Default {
     internal string DBUsername = "";
     internal string DBPassword = "";
