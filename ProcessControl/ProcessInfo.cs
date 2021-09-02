@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EFPractice.ProcessControl {
+﻿namespace EFPractice.ProcessControl {
   public class ProcessInfo {
     public int PID { get; set; }
     public int PortNumber { get; set; }

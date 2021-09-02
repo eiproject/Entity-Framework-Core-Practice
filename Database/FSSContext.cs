@@ -1,12 +1,4 @@
-﻿using EFPractice.Database;
-using EFPractice.ProcessControl;
-using Microsoft.EntityFrameworkCore;
-using Renci.SshNet;
-using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Net.NetworkInformation;
-using System.Text;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace EFPractice.Database {
   class FSSContext : DbContext {
