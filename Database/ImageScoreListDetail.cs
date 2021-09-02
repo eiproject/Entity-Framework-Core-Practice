@@ -22,7 +22,7 @@ namespace EFPractice.Database {
     public TimeSpan Timing { get; set; }
 
     [Column("sc_timestamp")]
-    public TimeSpan ScTimestamp { get; set; }
+    public DateTime ScTimestamp { get; set; }
 
     [Column("scoreformat")]
     public int? ScoreFormat { get; set; }
