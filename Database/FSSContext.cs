@@ -19,16 +19,27 @@ namespace EFPractice.Database {
 
     internal FSSContext() {
       _credential = new CredentialManager();
+      _process = new ProcessManager();
+
+      _process.KillProcessByPortNumber(_credential.DBLocalPort);
+      ConnectToClient();
+      ConnectToPortForwarding();
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
       if (!optionsBuilder.IsConfigured) {
         optionsBuilder.UseNpgsql(
-        $"Host={ _credential.DBTunnelHost };" +
+        $"Host={ _credential.DBLocalServer };" +
         $"Database={ _credential.DBName };" +
         $"Username={ _credential.DBUsername };" +
-        $"Password={_credential.DBPassword }");
+        $"Password={ _credential.DBPassword }");
       }
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+      modelBuilder.HasDefaultSchema("public");
+      base.OnModelCreating(modelBuilder);
     }
 
     internal void Test() {

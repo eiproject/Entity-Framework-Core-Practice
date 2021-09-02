@@ -22,9 +22,10 @@ namespace EFPractice.ProcessControl {
         IEnumerable<ProcessInfo> filteredPort = _processes.Where(p => p.PortNumber == port);
         foreach (ProcessInfo portObj in filteredPort) {
           try {
+            Console.ReadKey();
             KillProcessAtPort(portObj);
           }
-          catch (Exception e) {
+          catch (NullReferenceException e) {
             Console.WriteLine($"Error: {e}");
           }
         }
@@ -49,9 +50,9 @@ namespace EFPractice.ProcessControl {
       process.Start();
 
       var soStream = process.StandardOutput;
-      if (process.ExitCode != 0) throw new Exception("something broke");
       _processReadResult = soStream.ReadToEnd();
 
+      if (process.ExitCode != 0) throw new Exception("something broke");
       return _processReadResult;
     }
 
@@ -73,7 +74,8 @@ namespace EFPractice.ProcessControl {
     }
 
     private void KillProcessAtPort(ProcessInfo portObj) {
-      Process.GetProcessById(portObj.PID).Kill();
+      Process.GetProcessById(portObj.PID).Kill(true);
+      Process.GetProcessById(portObj.PID).WaitForExit();
       Console.WriteLine($"Port { portObj.Protocol } { portObj.PortNumber } at PID { portObj.PID} Killed.");
     }
   }
