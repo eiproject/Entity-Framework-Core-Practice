@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EFPractice.Database {
   [Table("imagescorelistdetail")]
-  class ImageScoreListDetail {
+  public class ImageScoreListDetail {
     [Column("id")]
     public int Id { get; set; }
 

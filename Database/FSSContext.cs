@@ -23,9 +23,9 @@ namespace EFPractice.Database {
       }
     }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder) {
+/*    protected override void OnModelCreating(ModelBuilder modelBuilder) {
       modelBuilder.HasDefaultSchema("public");
       base.OnModelCreating(modelBuilder);
-    }
+    }*/
   }
 }

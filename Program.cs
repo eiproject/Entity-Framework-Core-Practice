@@ -1,6 +1,8 @@
-﻿using EFPractice.Database;
+﻿using EFPractice.Business;
+using EFPractice.Database;
 using EFPractice.ProcessControl;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace EFPractice {
@@ -11,9 +13,15 @@ namespace EFPractice {
       prc.KillProcessByPortNumber(5432);*/
 
       FSSContext context = new FSSContext();
-      var data = context.ImageScoreListDetail
-                    .First();
-      Console.WriteLine(data.Timing);
+      DisagreementFilter df = new DisagreementFilter(context);
+      List<int> disagreemntId = df.GetDisagreementId();
+      Console.WriteLine($"There are { disagreemntId.Count() } disagreements");
+
+      /*var data = context.ImageScoreListDetail
+                    .Where(p => p.ScorerId == 115);*/
+
+      /*Console.WriteLine(data.Count());
+      Console.ReadKey();*/
       // context.Test();
     }
   }

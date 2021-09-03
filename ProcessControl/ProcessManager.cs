@@ -21,7 +21,6 @@ namespace EFPractice.ProcessControl {
         IEnumerable<ProcessInfo> filteredPort = _processes.Where(p => p.PortNumber == port);
         foreach (ProcessInfo portObj in filteredPort) {
           try {
-            Console.ReadKey();
             KillProcessAtPort(portObj);
           }
           catch (NullReferenceException e) {
